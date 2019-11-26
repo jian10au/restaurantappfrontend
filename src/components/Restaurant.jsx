@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import {Link} from 'react-router-dom'
 
 class Restaurant extends React.Component {
 
@@ -16,14 +17,16 @@ render(){
     if(this.state.data!==null){
         
         const restaurants = this.state.data;
-        console.log(restaurants);
         const restaurantList = restaurants.map(
             (restaurant) => {
                 return(
+                    
                     <div className="restaurant" key={restaurant._id}>
-                        <p>Name: {restaurant.name}</p>
+                        <Link to={`/${restaurant._id}`}><p>Name: {restaurant.name}</p></Link>
                         <p>Description: {restaurant.description}</p>
+                      
                     </div>
+
                 )
             }
         )

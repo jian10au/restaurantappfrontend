@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 
+
 class ShowRestaurant extends React.Component {
 
     state = {
@@ -9,7 +10,6 @@ class ShowRestaurant extends React.Component {
 
     async componentDidMount() {
         const {data} = await axios.get(`http://localhost:5000/${this.props.match.params.id}`)
-        
         this.setState({
             restaurant:data
         })
@@ -17,6 +17,7 @@ class ShowRestaurant extends React.Component {
     }
 
     handleEdit =()=> {
+    
         this.props.history.push(`/edit/${this.props.match.params.id}`)
     }
 
@@ -30,6 +31,7 @@ class ShowRestaurant extends React.Component {
 
     render(){
         const {restaurant} = this.state
+        
         return restaurant ? (
             <div>
                 <h1>{restaurant.name}</h1>

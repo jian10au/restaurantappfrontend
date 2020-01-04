@@ -10,7 +10,7 @@ const Router = () => {
         <Switch>
             <Route exact path="/new" component={NewRestaurant} />
             {/* you can pass props through */}
-            <Route exact path='/edit/:id' render={(match,history) => <EditRestaurant match={match} history={history}/> }/>
+            <Route exact path='/edit/:id' render={({match,history}) => <EditRestaurant match={match} history={history}/> }/>
             <Route exact path="/:id" render={({match,history}) => <ShowRestaurant match={match} history={history}/>} />
             <Route exact path="/" render={() => <Restaurant />} />
            

@@ -11,7 +11,7 @@ class EditRestaurant extends Component {
 
 
     async componentDidMount(){
-        console.log(this.props.match);
+      
        const {data} = await axios.get(`http://localhost:5000/${this.props.match.params.id}`)
         this.setState({
             name:data.name,
@@ -26,15 +26,18 @@ class EditRestaurant extends Component {
         })
     }
 
-    handleSubmit = async () => {
+    handleSubmit = async (e) => {
+        e.preventDefault();
         
         await axios.put(`http://localhost:5000/update/${this.props.match.params.id}`,this.state)
         console.log('success')
+        
         this.props.history.push("/")
     }
 
 
     render(){
+        
         const {name,description} = this.state
         return(
             <>
@@ -44,7 +47,7 @@ class EditRestaurant extends Component {
                 <input type="text" name="name" id="name" defaultValue={name} onChange={this.handleChange}/>
                 <label htmlFor="description">Description</label>
                 <input type="text" name="description" id="description" defaultValue={description} onChange={this.handleChange}/>
-                <button>Submit</button>
+                <button onClick={this.handleSubmit}>Click</button>
             </form>
             </>
         )

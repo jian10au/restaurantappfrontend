@@ -31,10 +31,12 @@ render(){
             }
         )
 
-
+        console.log(this.state.data)
         return(
             restaurantList
         )
+        
+
         }else{
         return(
             <p>Loading Restaurant</p>
